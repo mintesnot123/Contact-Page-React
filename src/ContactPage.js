@@ -39,6 +39,9 @@ function ContactPage() {
   const onTextFieldChange = (e) => {
     setFields({ ...fields, [e.target.name]: e.target.value });
   };
+  const onSubmit = () => {
+    console.log(fields);
+  };
   return (
     <>
       <Typography
@@ -130,6 +133,7 @@ function ContactPage() {
                       sx={{ bgcolor: '#212121' }}
                       aria-label="fingerprint"
                       color="secondary"
+                      onClick={onSubmit}
                     >
                       <TelegramIcon sx={{ color: '#e0e0e0' }} />
                     </IconButton>
