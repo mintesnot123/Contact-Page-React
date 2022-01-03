@@ -1,4 +1,4 @@
-import react, { setState } from 'react';
+import * as React from 'react';
 // material ui core components
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
 
 function ContactPage() {
   const classes = useStyles();
-  const [fields, setFields] = useState({
+  const [fields, setFields] = React.useState({
     name: '',
     email: '',
     phone: '',
@@ -81,19 +81,27 @@ function ContactPage() {
                       label="Your Name"
                       variant="standard"
                       size="large"
+                      name="name"
                     />
                     <TextField
                       label="Email Address"
                       variant="standard"
                       size="large"
+                      name="email"
                     />
                   </Stack>
                   <Stack spacing={8} direction="row">
-                    <TextField label="Phone" variant="standard" size="large" />
+                    <TextField
+                      label="Phone"
+                      variant="standard"
+                      size="large"
+                      name="phone"
+                    />
                     <TextField
                       label="Company"
                       variant="standard"
                       size="large"
+                      name="company"
                     />
                   </Stack>
                   <Stack spacing={8} direction="row" sx={{ mb: 2 }}>
@@ -101,6 +109,7 @@ function ContactPage() {
                       label="Message"
                       variant="standard"
                       size="large"
+                      name="message"
                     />
                   </Stack>
                   <Stack
