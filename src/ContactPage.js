@@ -37,11 +37,8 @@ function ContactPage() {
     message: '',
   });
   const onTextFieldChange = (e) => {
-    setFields(
-      ...fields,
-      e.target.name: e.target.value
-    )
-  }
+    setFields({ ...fields, [e.target.name]: e.target.value });
+  };
   return (
     <>
       <Typography
