@@ -15,9 +15,10 @@ import SendToMobileIcon from '@mui/icons-material/SendToMobile';
 import AttachEmailIcon from '@mui/icons-material/AttachEmail';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import SortIcon from '@mui/icons-material/Sort';
-
+// custem component
 import ContactInfoItem from './components/ContactInfoItem';
 
+// style
 const useStyles = makeStyles((theme) => ({
   title: {
     textAlign: 'center',
@@ -26,22 +27,30 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: '#424242',
   },
 }));
+// initial form values
+const initialFields = {
+  name: '',
+  email: '',
+  phone: '',
+  company: '',
+  message: '',
+};
 
 function ContactPage() {
   const classes = useStyles();
-  const [fields, setFields] = React.useState({
-    name: '',
-    email: '',
-    phone: '',
-    company: '',
-    message: '',
-  });
+  const [fields, setFields] = React.useState(initialFields);
+
+  // function run when one of the textfields value change
   const onTextFieldChange = (e) => {
     setFields({ ...fields, [e.target.name]: e.target.value });
   };
+  // function run when send button clicked
   const onSubmit = () => {
-    console.log(fields);
+    // log the form values
+    console.log('form values: ', fields);
+    setFields(initialFields);
   };
+
   return (
     <>
       <Typography
@@ -88,14 +97,19 @@ function ContactPage() {
                       variant="standard"
                       size="large"
                       name="name"
+                      value={fields.name}
                       onChange={onTextFieldChange}
+                      inputProps={{ maxLength: 50 }}
                     />
                     <TextField
                       label="Email Address"
                       variant="standard"
                       size="large"
+                      type="email"
                       name="email"
+                      value={fields.email}
                       onChange={onTextFieldChange}
+                      inputProps={{ maxLength: 50 }}
                     />
                   </Stack>
                   <Stack spacing={8} direction="row">
@@ -104,14 +118,20 @@ function ContactPage() {
                       variant="standard"
                       size="large"
                       name="phone"
+                      type="number"
+                      value={fields.phone}
                       onChange={onTextFieldChange}
+                      inputProps={{ maxLength: 15 }}
                     />
                     <TextField
                       label="Company"
                       variant="standard"
                       size="large"
                       name="company"
+                      type="text"
+                      value={fields.company}
                       onChange={onTextFieldChange}
+                      inputProps={{ maxLength: 50 }}
                     />
                   </Stack>
                   <Stack spacing={8} direction="row" sx={{ mb: 2 }}>
@@ -120,7 +140,10 @@ function ContactPage() {
                       variant="standard"
                       size="large"
                       name="message"
+                      type="text"
+                      value={fields.message}
                       onChange={onTextFieldChange}
+                      inputProps={{ maxLength: 100 }}
                     />
                   </Stack>
                   <Stack
