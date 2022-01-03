@@ -36,6 +36,12 @@ function ContactPage() {
     company: '',
     message: '',
   });
+  const onTextFieldChange = (e) => {
+    setFields(
+      ...fields,
+      e.target.name: e.target.value
+    )
+  }
   return (
     <>
       <Typography
@@ -82,12 +88,14 @@ function ContactPage() {
                       variant="standard"
                       size="large"
                       name="name"
+                      onChange={onTextFieldChange}
                     />
                     <TextField
                       label="Email Address"
                       variant="standard"
                       size="large"
                       name="email"
+                      onChange={onTextFieldChange}
                     />
                   </Stack>
                   <Stack spacing={8} direction="row">
@@ -96,12 +104,14 @@ function ContactPage() {
                       variant="standard"
                       size="large"
                       name="phone"
+                      onChange={onTextFieldChange}
                     />
                     <TextField
                       label="Company"
                       variant="standard"
                       size="large"
                       name="company"
+                      onChange={onTextFieldChange}
                     />
                   </Stack>
                   <Stack spacing={8} direction="row" sx={{ mb: 2 }}>
@@ -110,6 +120,7 @@ function ContactPage() {
                       variant="standard"
                       size="large"
                       name="message"
+                      onChange={onTextFieldChange}
                     />
                   </Stack>
                   <Stack
